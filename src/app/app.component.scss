@@ -10,6 +10,8 @@ app-root{
     flex-direction: column;
     height: 100vh;
     width: 100vw;
+    z-index: 99;
+    position: fixed;
 
     mat-toolbar{
       position: sticky;
@@ -21,8 +23,9 @@ app-root{
     }
     .content{
       flex: 1;
-      background: #070707;
-      padding: 20px;
+      padding: 20px 0 20px 20px;
+      margin-right: 20px;
+      overflow: auto;
 
       .tts-content{
         display: flex;
@@ -42,5 +45,24 @@ app-root{
       }
     }
 
+  }
+
+  .background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 1);
+
+    img{
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      filter: blur(150px);
+      background-color: black;
+    }
   }
 }

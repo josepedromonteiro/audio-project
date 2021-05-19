@@ -2,7 +2,6 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {LanguageService} from './services/languages/language.service';
 import {SpeakService} from './services/speak/speak.service';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,8 +9,8 @@ import {SpeakService} from './services/speak/speak.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
+
   title = 'audio-project';
-  public audioSource: string;
   public activeLanguage: string;
   public text: string;
 
@@ -19,22 +18,8 @@ export class AppComponent implements OnInit {
               public speakService: SpeakService) {
   }
 
-
   ngOnInit(): void {
-
-
     this.activeLanguage = this.languageService.langs[0].code;
-  }
-
-  playAudio(): void {
-    const audio = new Audio(this.audioSource);
-    audio.load();
-    audio.play();
-  }
-
-  selectAudioFile(event: any): void {
-    this.audioSource = event.target.files[0].src;
-    this.playAudio();
   }
 
   public textToSpeech(): void {

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,11 +13,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
 import { SpeechRecognitionComponent } from './components/speech-recognition/speech-recognition.component';
+import { ImportAudioComponent } from './components/import-audio/import-audio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SpeechRecognitionComponent
+    SpeechRecognitionComponent,
+    ImportAudioComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { SpeechRecognitionComponent } from './components/speech-recognition/spee
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    NgxAudioPlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

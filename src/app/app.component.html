@@ -1,3 +1,8 @@
+
+<div class="background">
+  <img src="assets/img.png">
+</div>
+
 <div class="container">
   <mat-toolbar>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
@@ -6,10 +11,7 @@
     <span>Audio</span>
   </mat-toolbar>
   <div class="content">
-    <div class="audio">
-      <button mat-raised-button color="primary" (click)="audio.click()">Import file</button>
-      <input #audio type="file" accept="audio/*"  hidden (change)="selectAudioFile($event)">
-    </div>
+    <app-import-audio></app-import-audio>
     <div class="text-to-audio">
       <h2>Text to speech</h2>
       <form class="example-form">
