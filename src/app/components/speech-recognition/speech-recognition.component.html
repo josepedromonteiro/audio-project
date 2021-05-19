@@ -2,20 +2,44 @@
   <h2>Speech to text</h2>
   <form class="example-form">
     <div class="tts-content">
-      <mat-form-field class="text-area">
-        <mat-label>Type the text you want to translate</mat-label>
-        <textarea rows="10" matInput placeholder="Ex. My name is..." [(ngModel)]="text" [ngModelOptions]="{standalone: true}" ></textarea>
-      </mat-form-field>
       <div class="options">
         <mat-form-field appearance="fill">
           <mat-label>Language</mat-label>
           <mat-select [(ngModel)]="speechService.activeLanguage" [ngModelOptions]="{standalone: true}">
-            <mat-option *ngFor="let lang of speechService.langs" [value]="lang.code"  >
+            <mat-option *ngFor="let lang of languageService.langs" [value]="lang.code"  >
               {{lang.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
+        <button mat-raised-button [disabled]="!speechService.activeLanguage" color="primary" (click)="toggle()">
+          <ng-container *ngIf="!(speechService.isRecording | async); else stop">
+            <mat-icon>mic</mat-icon>
+            Record
+          </ng-container>
+          <ng-template #stop>
+            <mat-icon>stop</mat-icon>
+            STOP
+          </ng-template>
+          </button>
       </div>
+      <mat-form-field class="text-area">
+        <mat-label>Type the text you want to translate</mat-label>
+        <textarea rows="10" readonly matInput placeholder="Ex. My name is..." [value]="speechService.text | async" ></textarea>
+        <div class="actions" *ngIf="(speechService.text | async) && !(speechService.isRecording | async)">
+
+          <button mat-raised-button color="primary" (click)="clearText()">
+            <mat-icon>clear</mat-icon>
+            Clear text
+          </button>
+
+
+          <button mat-raised-button color="primary" (click)="speak()">
+            <mat-icon>volume_up</mat-icon>
+            Speak
+          </button>
+
+        </div>
+      </mat-form-field>
     </div>
   </form>
 </div>

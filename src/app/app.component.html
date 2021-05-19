@@ -22,12 +22,12 @@
             <mat-form-field appearance="fill">
               <mat-label>Language</mat-label>
                 <mat-select [(ngModel)]="activeLanguage" [ngModelOptions]="{standalone: true}">
-                  <mat-option *ngFor="let lang of langs" [value]="lang.code"  >
+                  <mat-option *ngFor="let lang of languageService.langs" [value]="lang.code"  >
                     {{lang.name}}
                   </mat-option>
                 </mat-select>
             </mat-form-field>
-            <button mat-raised-button color="primary" (click)="textToSpeech()">Text to speech</button>
+            <button [disabled]="!text" mat-raised-button color="primary" (click)="textToSpeech()">Text to speech</button>
           </div>
         </div>
       </form>
