@@ -1,0 +1,21 @@
+<div class="text-to-audio">
+  <h2>Speech to text</h2>
+  <form class="example-form">
+    <div class="tts-content">
+      <mat-form-field class="text-area">
+        <mat-label>Type the text you want to translate</mat-label>
+        <textarea rows="10" matInput placeholder="Ex. My name is..." [(ngModel)]="text" [ngModelOptions]="{standalone: true}" ></textarea>
+      </mat-form-field>
+      <div class="options">
+        <mat-form-field appearance="fill">
+          <mat-label>Language</mat-label>
+          <mat-select [(ngModel)]="speechService.activeLanguage" [ngModelOptions]="{standalone: true}">
+            <mat-option *ngFor="let lang of speechService.langs" [value]="lang.code"  >
+              {{lang.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
